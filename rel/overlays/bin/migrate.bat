@@ -1,0 +1,1 @@
+call "%~dp0\spending" eval Spending.Release.migrate
