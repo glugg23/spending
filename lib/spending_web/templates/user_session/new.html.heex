@@ -7,8 +7,8 @@
     </div>
   <% end %>
 
-  <%= label f, :email %>
-  <%= email_input f, :email, required: true %>
+  <%= label f, :name %>
+  <%= text_input f, :name, required: true %>
 
   <%= label f, :password %>
   <%= password_input f, :password, required: true %>
@@ -21,7 +21,8 @@
   </div>
 </.form>
 
-<p>
-  <%= link "Register", to: Routes.user_registration_path(@conn, :new) %> |
-  <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new) %>
-</p>
+<%= if function_exported?(Routes, :user_registration_path, 2) do %>
+  <p>
+    <%= link "Register", to: Routes.user_registration_path(@conn, :new) %>
+  </p>
+<% end %>
