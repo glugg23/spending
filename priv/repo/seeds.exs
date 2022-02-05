@@ -1,11 +1,9 @@
 # Script for populating the database. You can run it as:
 #
 #     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     Spending.Repo.insert!(%Spending.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
+
+Spending.Repo.insert!(%Spending.Accounts.User{
+  name: "Max",
+  password:
+    "$argon2id$v=19$m=131072,t=8,p=4$jnIqdHnDvsyjQs40ICyA7Q$9wtX3BvKMnbgAhfAVMSMSyz9H3RWbcIyUNhalRVCAU8"
+})

@@ -13,20 +13,17 @@ defmodule SpendingWeb.Router do
     plug :fetch_current_user
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
-  end
-
   scope "/", SpendingWeb do
     pipe_through :browser
 
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", SpendingWeb do
-  #   pipe_through :api
-  # end
+  scope "/transactions", SpendingWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    resources "/categories", CategoryController
+  end
 
   # Enables LiveDashboard only for development
   #
